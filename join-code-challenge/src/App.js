@@ -1,31 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import HomePage from './Containers/HomePage';
 
-function App() {
+class App extends Component {
 
   state = {
-    cases: [],
-    page: 1,
-
+    details: {}
   }
 
-  componentDidMount(
-    getCases(this.state.page)
-  )
-
-  getCases = (pageNumber) => {
-    fetch(`https://bikewise.org/api/v2/incidents?page=${pageNumber}&per_page=10&incident_type=theft&proximity_square=100`)
-      .then(response => response.json())
-      .then(cases => this.setState({cases}))
+  render() {
+    return (
+      <div>
+        <center>
+        <HomePage/>
+        </center>
+      </div>
+    );
   }
-  console.log('app state :>> ', this.state)
-  return (
-    
-    <div className="App">
-      
-    </div>
-  );
 }
 
 export default App;
+
